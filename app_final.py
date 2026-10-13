@@ -1,7 +1,7 @@
 import logging
 import os
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 
 
 APP_NAME = os.getenv("APP_NAME", "Finance Calculator API")
@@ -47,9 +47,9 @@ def info():
 
 @app.get("/loan-payment")
 def loan_payment(
-    principal: float,
-    annual_rate: float,
-    years: int,
+    principal: float = Query(gt=0),
+    annual_rate: float = Query(ge=0),
+    years: int = Query(gt=0),
 ):
     monthly_rate = annual_rate / 100 / 12
     months = years * 12
@@ -80,9 +80,9 @@ def loan_payment(
 
 @app.get("/future-value")
 def future_value(
-    principal: float,
-    annual_rate: float,
-    years: int,
+    principal: float = Query(gt=0),
+    annual_rate: float = Query(ge=0),
+    years: int = Query(gt=0),
 ):
     value = principal * (1 + annual_rate / 100) ** years
     logger.info(
@@ -102,9 +102,9 @@ def future_value(
 
 @app.get("/present-value")
 def present_value(
-    future_value: float,
-    annual_rate: float,
-    years: int,
+    future_value: float = Query(gt=0),
+    annual_rate: float = Query(ge=0),
+    years: int = Query(gt=0),
 ):
     value = future_value / (1 + annual_rate / 100) ** years
     logger.info(
@@ -120,3 +120,4 @@ def present_value(
         "years": years,
         "present_value": round(value, 2),
     }
+

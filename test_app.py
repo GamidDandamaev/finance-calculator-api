@@ -60,3 +60,16 @@ def test_future_value_missing_parameter():
     )
 
     assert response.status_code == 422
+
+
+def test_loan_payment_invalid_years():
+    response = client.get(
+        "/loan-payment",
+        params={
+            "principal": 1000000,
+            "annual_rate": 12,
+            "years": 0,
+        },
+    )
+
+    assert response.status_code == 422
