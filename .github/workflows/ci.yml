@@ -30,7 +30,7 @@ jobs:
         with:
           name: finance-calculator-api
           path: |
-            app.py
+            app_final.py
             test_app.py
             requirements.txt
             requirements-dev.txt

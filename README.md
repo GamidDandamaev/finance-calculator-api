@@ -84,13 +84,13 @@ export APP_CURRENCY="RUB"
 Для разработки:
 
 ```bash
-python -m uvicorn app:app --reload
+python -m uvicorn app_final:app --reload
 ```
 
 Для обычного запуска без автоматической перезагрузки:
 
 ```bash
-python -m uvicorn app:app --host 127.0.0.1 --port 8000
+python -m uvicorn app_final:app --host 127.0.0.1 --port 8000
 ```
 
 После запуска приложение доступно по адресу:
@@ -200,7 +200,7 @@ curl http://127.0.0.1:8000/health
 Например:
 
 ```bash
-python -m uvicorn app:app --host 127.0.0.1 --port 8001
+python -m uvicorn app_final:app --host 127.0.0.1 --port 8001
 ```
 
 ## Автор
